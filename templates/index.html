@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Sinh viên - B-Tree Index</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quản Lý Sinh Viên</h1>
+            <p>Minh họa cấu trúc dữ liệu với B-Tree Bậc 3</p>
+            <div id="notification" class="notification hidden"></div>
+        </header>
+        
+        <main>
+            <section class="controls glass-panel">
+                <div class="add-student-form">
+                    <h2>Thêm Sinh Viên Mới</h2>
+                    <form id="addForm">
+                        <input type="text" id="studentId" placeholder="Mã SV" required>
+                        <input type="text" id="studentName" placeholder="Họ và Tên" required>
+                        <select id="studentGender">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                        <button type="submit" class="btn primary-btn">Thêm Sinh Viên</button>
+                    </form>
+                </div>
+                
+                <div class="search-student-form">
+                    <h2>Tìm Kiếm</h2>
+                    <form id="searchForm">
+                        <input type="text" id="searchQuery" placeholder="Nhập từ khóa (để trống để xóa lọc) ">
+                        <select id="searchType">
+                            <option value="id">Theo Mã SV</option>
+                            <option value="name">Theo Họ Tên</option>
+                        </select>
+                        <button type="submit" class="btn info-btn">Tìm</button>
+                        <button type="button" id="clearSearchBtn" class="btn secondary-btn">Bỏ Lọc</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="visualizations">
+                <div class="panel glass-panel table-panel">
+                    <h2>Bảng Dữ Liệu Gốc</h2>
+                    <div class="table-container">
+                        <table id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã SV</th>
+                                    <th>Họ và Tên</th>
+                                    <th>Giới Tính</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Data rendered via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel glass-panel btree-panel">
+                    <h2>Cây Chỉ Mục: Mã SV (ID Index)</h2>
+                    <div id="idBTree" class="tree-canvas"></div>
+                </div>
+                
+                <div class="panel glass-panel btree-panel">
+                    <h2>Cây Chỉ Mục: Họ Tên (Name Index)</h2>
+                    <div id="nameBTree" class="tree-canvas"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
